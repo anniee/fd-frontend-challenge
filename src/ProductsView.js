@@ -12,22 +12,27 @@ class ProductsView extends Component {
     console.log('JSON DATA', jsonData);
     const loadData = () => JSON.parse(JSON.stringify(jsonData));
     console.log('LOAD DATA', loadData);
+
+    let productsList = [];
     for (let i in jsonData['documents']) {
         console.log('PRODUCT', jsonData['documents'][i]);
+        productsList.push(jsonData['documents'][i]);
     };
 
-    let dummyData = [{id: 1, name: 'Anne'}, {id: 2, name: 'Moe'}]
-    let list = dummyData.map((item, index) => (
+    console.log('PRODUCTS LIST', productsList);
 
-    <Link key={'product_' + index} to={
-        {
-            pathname: "/product/" + item.id,
-            state: { product: item.name}
-        }
-    }>
-        {item.name}
-    </Link>
+    // shortcut, in prod would recursively walk through JSON to get all products
 
+    let list = productsList.map((item, index) => (
+        <Link className="productGridItem" key={'product_' + index} to={
+            {
+                pathname: "/product/" + item.id,
+                state: { product: item.skuDisplayName_en[0]}
+            }
+        }>
+            <img src={item.images[1]} />
+            {item.skuDisplayName_en[0]}
+        </Link>
     ));
 
     console.log('LIST', list);

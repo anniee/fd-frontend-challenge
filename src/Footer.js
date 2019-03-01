@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
+import Navbar from 'react-bootstrap/Navbar'
 
 class Footer extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Footer</h2>
-          {/* <p>{this.props.names}</p> */}
-        <div>
-        </div>
-      </div>
+    <Navbar bg="light" variant="light" fixed="bottom">
+        <Navbar.Brand href="#home">
+        <img
+            alt=""
+            src="/logo.svg"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+        />
+        {' Fender '}
+        </Navbar.Brand>
+    </Navbar>
     );
   }
 }
